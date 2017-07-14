@@ -1,0 +1,56 @@
+{
+  "name": "brouter",
+  "version": "1.0.0",
+  "description": "Router factory for express.js",
+  "main": "index.js",
+  "scripts": {
+    "lint": "standard",
+    "precommit": "lint-staged",
+    "prepush": "standard",
+    "release": "npm t && npm version patch && npm publish && git push",
+    "test": "npm run lint && istanbul cover _mocha -- *.spec.js",
+    "test-and-report": "npm t && cat ./coverage/lcov.info | coveralls"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/titarenko/brouter.git"
+  },
+  "keywords": [
+    "router",
+    "express.js"
+  ],
+  "author": "Constantin Titarenko",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/titarenko/brouter/issues"
+  },
+  "homepage": "https://github.com/titarenko/brouter#readme",
+  "peerDependencies": {
+    "bluebird": "^3.5.0",
+    "express": "^4.15.3"
+  },
+  "devDependencies": {
+    "bluebird": "^3.5.0",
+    "coveralls": "^2.13.1",
+    "express": "^4.15.3",
+    "husky": "^0.14.3",
+    "istanbul": "^0.4.5",
+    "lint-staged": "^4.0.1",
+    "mocha": "^3.4.2",
+    "should": "^11.2.1",
+    "should-sinon": "0.0.5",
+    "sinon": "^2.3.8",
+    "standard": "^10.0.2",
+    "supertest": "^3.0.0"
+  },
+  "lint-staged": {
+    "*.js": "standard"
+  },
+  "standard": {
+    "globals": [
+      "describe",
+      "beforeEach",
+      "it"
+    ]
+  }
+}
