@@ -1,6 +1,6 @@
 {
   "name": "brouter",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Router factory for express.js",
   "main": "index.js",
   "scripts": {
