@@ -111,4 +111,15 @@ describe('brouter', function () {
       .expect(200)
       .then(response => response.body.should.eql(42))
   })
+  describe('compose', function () {
+    it('should compose routers', function () {
+      const router1 = brouter({ '/a': () => 1 })
+      const router2 = brouter({ '/b': () => 2 })
+      this.app.use(brouter.compose({ router1, router2 }))
+      return this.request
+        .get('/router2/b')
+        .expect(200)
+        .then(response => response.body.should.eql(2))
+    })
+  })
 })

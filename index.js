@@ -9,6 +9,7 @@ module.exports = function (...args) {
   routeGroups.forEach(g => g.forEach(r => router[r.verb](r.path, ...r.middlewares, r.handler)))
   return router
 }
+module.exports.compose = compose
 
 const methodsMap = {
   list: ['get', '/'],
@@ -53,4 +54,11 @@ function wrapHandler (handler) {
       }
     })
     .catch(next)
+}
+
+function compose (mapOfRouters) {
+  return Object.keys(mapOfRouters).reduce(
+    (router, key) => router.use(`/${key}`, mapOfRouters[key]),
+    express.Router()
+  )
 }
